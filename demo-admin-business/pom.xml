@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>demo-admin</artifactId>
+        <groupId>com.xuda</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>demo-admin-business</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.xuda</groupId>
+            <artifactId>demo-admin-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.axet</groupId>
+            <artifactId>kaptcha</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.7</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- mybatis dalgen ,run with "mvn mybatis:gen" -->
+            <plugin>
+                <groupId>cn.dalgen.plugins</groupId>
+                <artifactId>mybatis-maven-plugin</artifactId>
+                <version>1.1.7</version>
+                <configuration>
+                    <!-- 可选 不填写 使用默认路径-->
+                    <templateDirectory>dalgen/templates</templateDirectory>
+                    <!-- 代码输出路径 -->
+                    <outputDirectory>src</outputDirectory>
+                    <!-- 配置文件 -->
+                    <config>dalgen/config/config.xml</config>
+                    <!-- 自动复制模板 第一次需要设置为true,后续如果templates中的模板有修改需求需要设置为false否则会自动覆盖 -->
+                    <copyTemplate>false</copyTemplate>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
